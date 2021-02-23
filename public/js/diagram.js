@@ -17,7 +17,14 @@ var chart = new Chart(ctx, {
     {
         label: 'Session registraion',
         
-        backgroundColor: 'rgb(95,146,700)',
+        backgroundColor:function(e) {
+
+            if (sessionReg[e.dataIndex] > capacity[e.dataIndex]) {
+                console.log(sessionReg[e.dataIndex])
+                return  'rgb(155,35,800)'
+            }
+            return 'rgb(95,146,700)'
+        },
         borderColor: 'rgb(255,45,700)',
         data: sessionReg,
       
@@ -54,14 +61,14 @@ var chart = new Chart(ctx, {
         
     }
 });
-for (let i = 0; i < sessionReg.length; i++) {
+// for (let i = 0; i < sessionReg.length; i++) {
 
-    // console.log(capacity[i] + ' capac')
-    if (sessionReg[i] > 0) {
-        if (sessionReg[i] > capacity[i]) {
-        console.log(sessionReg[i])
-    }
-    }
+//     // console.log(capacity[i] + ' capac')
+//     if (sessionReg[i] > 0) {
+//         if (sessionReg[i] > capacity[i]) {
+//         console.log(sessionReg[i])
+//     }
+//     }
     
-}
+// }
 console.log(chart)
