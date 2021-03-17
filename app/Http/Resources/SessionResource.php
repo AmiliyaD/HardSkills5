@@ -18,6 +18,8 @@ class SessionResource extends JsonResource
             'id'=>$this->id,
             'room_id'=>$this->room_id,
             'title'=>$this->title,
+            'start'=>$this->start,
+            'end'=>$this->end,
             'cost'=>$this->cost
         ];
     }

@@ -9,4 +9,14 @@ class SessionRegistration extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    public function getSes()
+    {
+        return $this->hasMany(Session::class, 'id', 'session_id');
+
+        # code...
+    }
+    protected $fillable = [
+        'registration_id',
+        'session_id',
+    ];
 }

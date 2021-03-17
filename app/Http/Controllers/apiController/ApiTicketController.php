@@ -91,7 +91,7 @@ if ($tick->count() == 0) {
             'reg'=>Registration::where('attendee_id', $att->id)->with('eventTick.event.organizers')->get()->map(function($res) {
                 return [
                     'event'=>$res->eventTick->event,
-                    'session_ids'=>$res->sessions->pluck('id')
+                    'session_ids'=>$res->sessions->pluck('session_id')
                 ];
             })
             // 'registrations'=>RegistrationResource::collection(Registration::where('attendee_id', $att->id)->get())
