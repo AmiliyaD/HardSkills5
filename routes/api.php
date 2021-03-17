@@ -62,9 +62,9 @@ Route::middleware('api')->post('/v1/logout', [AttendeeController::class, 'logout
 
 Route::post('/v1/organers/{org_id}/events/{ev_id}/registration', [ApiTicketController::class, 'getTicket']);
 
-Route::post('/v1/registration',[ApiTicketController::class, 'getRegistration']);
-
-Route::post('/v1/num', function () {
+Route::get('/v1/registration',[ApiTicketController::class, 'getRegistration']);
+Route::get('/v1/sessions/{id}', [ApiTicketController::class, 'sessions']);
+Route::get('/v1/num', function () {
    
    $ss = SessionRegistration::where('registration_id', '>', 10)->get('id')->modelKeys();
     $ses = DB::table('session_registrations')->select('id')->where('registration_id','>', 10)->get();

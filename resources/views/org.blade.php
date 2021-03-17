@@ -34,6 +34,7 @@
                 <input type="password" id="inputPassword" name="password" class="form-control" required placeholder="Password">
                 <button class="btn btn-lg btn-primary btn-block" id="login" type="submit">{{ __('Login') }}</button>
             </form>
+            {{dd(Hash::make('demopass1'))}}
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>

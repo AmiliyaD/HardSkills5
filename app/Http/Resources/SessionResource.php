@@ -17,7 +17,8 @@ class SessionResource extends JsonResource
         return [
             'id'=>$this->id,
             'room_id'=>$this->room_id,
-            'title'=>$this->title
+            'title'=>$this->title,
+            'cost'=>$this->cost
         ];
     }
 }

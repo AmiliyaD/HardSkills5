@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Channel extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     public function Rooms()
     {
         return $this->hasMany(Room::class);

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     public function channel()
     {
         return $this->belongsTo(Channel::class);
