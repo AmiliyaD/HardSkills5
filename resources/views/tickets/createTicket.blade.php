@@ -2,7 +2,7 @@
 
             <div class="mb-3 pt-3 pb-2">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <h2 class="h4">Create new ticket</h2>
+                    <h2 class="h4">Создать новый билет</h2>
                 </div>
             </div>
 
@@ -10,43 +10,43 @@
 @csrf
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputName">Name</label>
+                        <label for="inputName">Имя</label>
                         <!-- adding the class is-invalid to the input, shows the invalid feedback below -->
                         <input type="text" class="form-control is-invalid" id="inputName" name="name" placeholder="" value="">
                         <div class="invalid-feedback">
-                            Name is required.
+                            Имя обязательно
                         </div>
                     </div>
                 </div>
                 <input type="hidden" name="event_id" value="{{$event->id}}">
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputCost">Cost</label>
+                        <label for="inputCost">Цена</label>
                         <input type="number" class="form-control" id="inputCost" name="cost" placeholder="" value="0">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="selectSpecialValidity">Special Validity</label>
+                        <label for="selectSpecialValidity">Специальное условие</label>
                         <select class="form-control" id="selectSpecialValidity" name="special_validity">
-                            <option value="" selected>None</option>
-                            <option value="amount">Limited amount</option>
-                            <option value="date">Purchaseable till date</option>
+                            <option value="" selected>Нет</option>
+                            <option value="amount">Ограниченное количество</option>
+                            <option value="date">Продажа до определенного числа</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputAmount">Maximum amount of tickets to be sold</label>
+                        <label for="inputAmount">Количество билетов</label>
                         <input type="number" class="form-control" id="inputAmount" name="amount" placeholder="" value="0">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputValidTill">Tickets can be sold until</label>
+                        <label for="inputValidTill">Билеты можно продать до</label>
                         <input type="date"
                                class="form-control"
                                id="inputValidTill"
@@ -57,8 +57,8 @@
                 </div>
 
                 <hr class="mb-4">
-                <button class="btn btn-primary" type="submit">Save ticket</button>
-                <a href="events/detail.html" class="btn btn-link">Cancel</a>
+                <button class="btn btn-primary" type="submit">Сохранить билет</button>
+                <a href="{{ route('detail', $event->id) }}" class="btn btn-link">Назад</a>
             </form>
             @if ($errors->any())
             <div class="alert alert-danger">

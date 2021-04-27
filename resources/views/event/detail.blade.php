@@ -7,25 +7,7 @@
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('index') }}">Manage Events</a></li>
-                </ul>
-
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>{{$one->name}}</span>
-                </h6>
-                <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link active" href="events/detail.html">Overview</a></li>
-                </ul>
-
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Reports</span>
-                </h6>
-                <ul class="nav flex-column mb-2">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('report', ['id'=>$one->id]) }}">Room capacity</a></li>
-                </ul>
-            </div>
+          @include('over')
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -34,7 +16,7 @@
                     <h1 class="h2">{{$one->name}}</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
-                            <a href="{{ route('edit', ['id'=>$one->id]) }}" class="btn btn-sm btn-outline-secondary">Edit event</a>
+                            <a href="{{ route('edit', ['id'=>$one->id]) }}" class="btn btn-sm btn-outline-secondary">Редактировать событие</a>
                         </div>
                     </div>
                 </div>
@@ -44,11 +26,11 @@
             <!-- Tickets -->
             <div id="tickets" class="mb-3 pt-3 pb-2">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <h2 class="h4">Tickets</h2>
+                    <h2 class="h4">Билеты</h2>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <a href="{{ route('ticket', ['id'=>$one->id]) }}" class="btn btn-sm btn-outline-secondary">
-                                Create new ticket
+                                Создать новый билет
                             </a>
                         </div>
                     </div>
@@ -66,11 +48,19 @@
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title">{{$item->name}}</h5>
-                            <p class="card-text">Цена: {{$item->cost}}</p>
+                            <p class="card-text">Цена: {{$item->cost}} $</p>
                       
-                            <p  class="card-text">Type: {{$item->special_validity}}</p>
+                            <p  class="card-text">Тип: 
+                                @if ($item->special_validity == 'amount')
+                              <i>количество  </i>  
+                            @endif
+                            @if ($item->special_validity == 'date')
+                       <i>  дата</i>
+                            @endif</p>
+
+
                             @if ($item->special_validity == 'amount')
-                                <p class="card-text">{{$item->max_sold}} билетов осталось </p>    
+                                <p class="card-text">Макс. количество билетов: {{$item->max_sold}} шт.</p>    
                             @endif
                             @if ($item->special_validity == 'date')
                             <p class="card-text">Продажа до: {{$item->date_until}} </p> 
@@ -83,15 +73,16 @@
                
       
             </div>
+            
 
             <!-- Sessions -->
             <div id="sessions" class="mb-3 pt-3 pb-2">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <h2 class="h4">Sessions</h2>
+                    <h2 class="h4">Сессии</h2>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <a href="{{ route('createSession', ['id'=>$one->id]) }}" class="btn btn-sm btn-outline-secondary">
-                                Create new session
+                            Создать новую сессию
                             </a>
                         </div>
                     </div>
@@ -102,11 +93,11 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Time</th>
-                        <th>Type</th>
-                        <th class="w-100">Title</th>
-                        <th>Speaker</th>
-                        <th>Channel</th>
+                        <th>Время</th>
+                        <th>Tип</th>
+                        <th class="w-100">Заголовок</th>
+                        <th>Спикер</th>
+                        <th>Канал</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -132,11 +123,11 @@
             <!-- Channels -->
             <div id="channels" class="mb-3 pt-3 pb-2">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <h2 class="h4">Channels</h2>
+                    <h2 class="h4">Каналы</h2>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <a href="{{ route('channelCreate', ['id'=>$one->id]) }}" class="btn btn-sm btn-outline-secondary">
-                                Create new channel
+                               Создать новый канал
                             </a>
                         </div>
                     </div>
@@ -146,11 +137,21 @@
             <div class="row channels">
                 @if (isset($channel))
                 @foreach ($channel as $chan)
+               
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title">{{$chan->name}}</h5>
-                            <p class="card-text">{{$session->count()}} sessions, {{$get->count()}} rooms</p>
+                            <p class="card-text">{{$chan->Session->count()}} сессии,
+                                @if ($chan->Rooms->count() >= 5 || $chan->Rooms->count() == 0)
+                                {{$chan->Rooms->count()}}   комнат
+                                @elseif($chan->Rooms->count() == 1 )
+                                {{$chan->Rooms->count()}}   комната
+                                @else 
+                                {{$chan->Rooms->count()}}   комнаты
+                                @endif
+                                
+                                </p>
                         </div>
                     </div>
                 </div>
@@ -163,11 +164,11 @@
             <!-- Rooms -->
             <div id="rooms" class="mb-3 pt-3 pb-2">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <h2 class="h4">Rooms</h2>
+                    <h2 class="h4">Комнаты</h2>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
                             <a href="{{ route('createRoom', ['id'=>$one->id]) }}" class="btn btn-sm btn-outline-secondary">
-                                Create new room
+                                Создать новую комнату
                             </a>
                         </div>
                     </div>
@@ -178,8 +179,8 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Capacity</th>
+                        <th>Имя</th>
+                        <th>Вместимость</th>
                     </tr>
                     </thead>
                     <tbody>

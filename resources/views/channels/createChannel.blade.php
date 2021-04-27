@@ -36,7 +36,7 @@ Event - CreateChannel
 
             <div class="mb-3 pt-3 pb-2">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <h2 class="h4">Create new channel</h2>
+                    <h2 class="h4">Создать новый канал</h2>
                 </div>
             </div>
 
@@ -45,19 +45,19 @@ Event - CreateChannel
                 @csrf
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputName">Name</label>
+                        <label for="inputName">Название</label>
                         <!-- adding the class is-invalid to the input, shows the invalid feedback below -->
                         <input type="text" class="form-control is-invalid" id="inputName" name="name" placeholder=""
                             value="">
                         <div class="invalid-feedback">
-                            Name is required.
+                      Название обязательно
                         </div>
                     </div>
                 </div>
                 <input type="hidden" name="event_id" value="{{$eve->id}}">
                 <hr class="mb-4">
-                <button class="btn btn-primary" type="submit">Save channel</button>
-                <a href="events/detail.html" class="btn btn-link">Cancel</a>
+                <button class="btn btn-primary" type="submit">Сохранить канал</button>
+                <a href="{{ route('detail', $eve->id) }}" class="btn btn-link">Назад</a>
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

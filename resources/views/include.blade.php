@@ -20,7 +20,7 @@
     <span class="navbar-organizer w-100">{{Auth::user()->name}}</span>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" id="logout" href="{{ route('logout') }}">Sign out</a>
+            <a class="nav-link" id="logout" href="{{ route('logout') }}">Выйти</a>
         </li>
     </ul>
 </nav>

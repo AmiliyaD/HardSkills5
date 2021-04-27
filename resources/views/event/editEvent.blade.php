@@ -7,16 +7,18 @@
                 </div>
             </div> --}}
 @include('../eventHeader')
-
+@section('title-2')
+    Edit Session
+@endsection
             <form class="needs-validation" method="POST" novalidate action="{{ route('update', ['id'=>$event->id]) }}">
                 @csrf
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputName">Name</label>
+                        <label for="inputName">Название</label>
                         <!-- adding the class is-invalid to the input, shows the invalid feedback below -->
                         <input type="text" class="form-control is-invalid" name="name" id="inputName" placeholder="" value="">
                         <div class="invalid-feedback">
-                            Name is required.
+                           Название обязательно
                         </div>
                     </div>
                 </div>
@@ -30,7 +32,7 @@
 
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputDate">Date</label>
+                        <label for="inputDate">Дата</label>
                         <input type="date"
                                class="form-control"
                                id="inputDate"
@@ -41,8 +43,8 @@
                 </div>
 
                 <hr class="mb-4">
-                <button class="btn btn-primary" type="submit">Save</button>
-                <a href="events/detail.html" class="btn btn-link">Cancel</a>
+                <button class="btn btn-primary" type="submit">Сохранить</button>
+                <a href="{{ route('detail', $event->id) }}" class="btn btn-link">Назад</a>
             </form>
             @if ($errors->any())
             <div class="alert alert-danger">

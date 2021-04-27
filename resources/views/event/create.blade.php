@@ -16,12 +16,12 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div
                 class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Manage Events</h1>
+                <h1 class="h2">Все события</h1>
             </div>
 
             <div class="mb-3 pt-3 pb-2">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <h2 class="h4">Create new event</h2>
+                    <h2 class="h4">Создать новое событие</h2>
                 </div>
             </div>
 
@@ -29,11 +29,11 @@
                 @csrf
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputName">Name</label>
+                        <label for="inputName">Название</label>
                         <!-- adding the class is-invalid to the input, shows the invalid feedback below -->
                         <input type="text" class="form-control is-invalid" id="inputName" name="name" placeholder="" value="{{old('name')}}">
                         <div class="invalid-feedback">
-                            Name is required.
+                          Название обязательно
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
 
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputDate">Date</label>
+                        <label for="inputDate">Дата</label>
                         <input type="date"
                                class="form-control"
                                id="inputDate"
@@ -58,8 +58,8 @@
                 </div>
 
                 <hr class="mb-4">
-                <button class="btn btn-primary" type="submit">Save event</button>
-                <a href="events/index.html" class="btn btn-link">Cancel</a>
+                <button class="btn btn-primary" type="submit">Сохранить событие</button>
+                <a href="{{ asset('index') }}" class="btn btn-link">Назад</a>
             </form>
             {{-- error на каждый input --}}
             @if ($errors->any())

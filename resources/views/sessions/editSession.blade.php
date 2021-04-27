@@ -7,7 +7,7 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="events/index.html">Manage Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events/index.html">Все события</a></li>
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -36,7 +36,7 @@
 
             <div class="mb-3 pt-3 pb-2">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                    <h2 class="h4">Edit session</h2>
+                    <h2 class="h4">Редактировать сессию</h2>
                 </div>
             </div>
 
@@ -55,25 +55,25 @@
 
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputTitle">Title</label>
+                        <label for="inputTitle">Заголовок</label>
                         <!-- adding the class is-invalid to the input, shows the invalid feedback below -->
                         <input type="text" class="form-control is-invalid" id="inputTitle" name="title" placeholder="" value="">
                         <div class="invalid-feedback">
-                            Title is required.
+                           Заголовок обязателен
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputSpeaker">Speaker</label>
+                        <label for="inputSpeaker">Спикер</label>
                         <input type="text" class="form-control" id="inputSpeaker" name="speaker" placeholder="" value="">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="selectRoom">Room</label>
+                        <label for="selectRoom">Комната</label>
                      
                         <select class="form-control" id="selectRoom" name="room">
                           
@@ -85,21 +85,21 @@
                             @endforeach
                         </select>
                         <div class="invalid-feedback">
-                            Room is required.
+                         Комната обязательна
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-lg-4 mb-3">
-                        <label for="inputCost">Cost</label>
+                        <label for="inputCost">Цена</label>
                         <input type="number" class="form-control" id="inputCost" name="cost" placeholder="" value="0">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-lg-6 mb-3">
-                        <label for="inputStart">Start</label>
+                        <label for="inputStart">Начало</label>
                         <input type="date"
                                class="form-control"
                                id="inputStart"
@@ -108,7 +108,7 @@
                                value="{{old('start')}}">
                     </div>
                     <div class="col-12 col-lg-6 mb-3">
-                        <label for="inputEnd">End</label>
+                        <label for="inputEnd">Конец</label>
                         <input type="date"
                                class="form-control"
                                id="inputEnd"
@@ -120,14 +120,14 @@
 
                 <div class="row">
                     <div class="col-12 mb-3">
-                        <label for="textareaDescription">Description</label>
+                        <label for="textareaDescription">Описание</label>
                         <textarea class="form-control" id="textareaDescription" name="description" placeholder="" rows="5"></textarea>
                     </div>
                 </div>
 
                 <hr class="mb-4">
-                <button class="btn btn-primary" type="submit">Save session</button>
-                <a href="events/detail.html" class="btn btn-link">Cancel</a>
+                <button class="btn btn-primary" type="submit">Сохранить сессию</button>
+                <a href="{{ route('detail', $event->id) }}" class="btn btn-link">Назад</a>
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

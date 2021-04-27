@@ -7,7 +7,7 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="events/index.html">Manage Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('index') }}">Все события</a></li>
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -18,10 +18,10 @@
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Reports</span>
+                    <span>Диаграммы</span>
                 </h6>
                 <ul class="nav flex-column mb-2">
-                    <li class="nav-item"><a class="nav-link active" href="{{ route('report', ['id'=>$event->id]) }}">Room capacity</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ route('report', ['id'=>$event->id]) }}">Вместимость комнаты</a></li>
                 </ul>
             </div>
         </nav>
