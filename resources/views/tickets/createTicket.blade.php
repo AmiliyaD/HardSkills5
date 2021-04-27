@@ -1,5 +1,7 @@
 @include('../eventHeader')
-
+@section('title-2')
+   Tickets
+@endsection
             <div class="mb-3 pt-3 pb-2">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                     <h2 class="h4">Create new ticket</h2>

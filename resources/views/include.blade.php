@@ -10,6 +10,7 @@
 
     <base href="../">
     <!-- Bootstrap core CSS -->
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>

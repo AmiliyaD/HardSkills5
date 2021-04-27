@@ -7,6 +7,7 @@
     <meta name="author" content="">
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> --}}
     <title>Event Backend</title>
+<link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <base href="./">
@@ -34,7 +35,7 @@
                 <input type="password" id="inputPassword" name="password" class="form-control" required placeholder="Password">
                 <button class="btn btn-lg btn-primary btn-block" id="login" type="submit">{{ __('Login') }}</button>
             </form>
-            {{dd(Hash::make('demopass1'))}}
+            
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
