@@ -43,7 +43,7 @@ class ChannelController extends Controller
         $saveChann->event_id = $id;
         $saveChann->name = $request->name;
         $saveChann->save();
-        $request->session()->flash('info', "Channel $request->name успешно создан");
+        $request->session()->flash('info', "Канал $request->name успешно создан");
         return redirect()->route('detail', $request->event_id);
     }
 

@@ -46,7 +46,7 @@ class RoomController extends Controller
         $room->name = $request->name;
         $room->capacity = $request->capacity;
         $room->save();
-        $request->session()->flash('info', "Room $request->name успешно создан");
+        $request->session()->flash('info', "Комната $request->name успешно создана");
         return redirect()->route('detail', ['id'=>$request->event_id]);
     }
 

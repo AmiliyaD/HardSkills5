@@ -7,14 +7,14 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="events/index.html">Все события</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('index') }}">Все события</a></li>
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>{{$evSes->name}}</span>
                 </h6>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="events/detail.html">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('detail', ['id'=>$evSes->id]) }}">Просмотр события</a></li>
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -95,7 +95,7 @@
                 <div class="row">
                     <div class="col-12 col-lg-6 mb-3">
                         <label for="inputStart">Начало</label>
-                        <input type="date"
+                        <input type="datetime-local"
                                class="form-control"
                                id="inputStart"
                                name="start"
@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-12 col-lg-6 mb-3">
                         <label for="inputEnd">Конец</label>
-                        <input type="date"
+                        <input type="datetime-local"
                                class="form-control"
                                id="inputEnd"
                                name="end"

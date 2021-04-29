@@ -56,8 +56,12 @@
                             @endif
                             @if ($item->special_validity == 'date')
                        <i>  дата</i>
-                            @endif</p>
-
+                            @endif
+                            @if ($item->special_validity == '')
+                            нет
+                        @endif
+                        </p>
+                               
 
                             @if ($item->special_validity == 'amount')
                                 <p class="card-text">Макс. количество билетов: {{$item->max_sold}} шт.</p>    

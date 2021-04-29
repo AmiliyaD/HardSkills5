@@ -51,7 +51,7 @@ class TicketController extends Controller
         $tick->max_sold = $request->amount;
         $tick->date_until = $request->valid_until;
         $tick->save();
-        $request->session()->flash('info', "Ticket $request->name успешно создан!");
+        $request->session()->flash('info', "Билет $request->name успешно создан!");
         return redirect()->route('detail', $request->event_id);
     }
 

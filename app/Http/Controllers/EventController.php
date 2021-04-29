@@ -52,7 +52,7 @@ class EventController extends Controller
         $saveE->date = $request->date;
         $saveE->organizer_id = Auth::id();
         $saveE->save();
-        $request->session()->flash('info', 'Event успешно создан!');
+        $request->session()->flash('info', 'Событие успешно создано!');
         return redirect()->route('detail', ['id'=>$saveE->id]);
       
     }
@@ -119,7 +119,7 @@ class EventController extends Controller
         $eventOne->slug = $request->slug;
         $eventOne->date = $request->date;
         $eventOne->save();
-        $request->session()->flash('info', "Event $request->name успешно обновлен");
+        $request->session()->flash('info', "Событие $request->name успешно обновлено");
         return redirect()->route('detail', $request->event_id);
      
     }

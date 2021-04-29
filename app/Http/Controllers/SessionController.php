@@ -74,6 +74,7 @@ class SessionController extends Controller
         $session->speaker = $request->speaker;
         $session->room_id = $request->room;
         $session->start = $request->start;
+        $session->cost = $request->cost;
         $session->end = $request->end;
         $session->description = $request->description;
         $session->save();

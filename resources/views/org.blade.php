@@ -26,12 +26,12 @@
             <form class="form-signin" method="POST" action="{{ route('check') }}">
                 @csrf
                 <h1 class="h3 mb-3 font-weight-normal">Авторизируйтесь</h1>
-                <x-label for="email" :value="__('Email')" />
+                {{-- <x-label for="email" :value="__('Email')" /> --}}
                 <label for="inputEmail" class="sr-only">Емайл</label>
-                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Емайл" required autofocus>
 
                 <label for="inputPassword" class="sr-only">Пароль</label>
-                <input type="password" id="inputPassword" name="password" class="form-control" required placeholder="Password">
+                <input type="password" id="inputPassword" name="password" class="form-control" required placeholder="Пароль">
                 <button class="btn btn-lg btn-primary btn-block" id="login" type="submit">{{ __('Login') }}</button>
             </form>
           
